@@ -26,7 +26,7 @@ import { LogoutRequestDenied } from "../components/LogoutRequestDenied";
 import { USER_DENIED_LOGOUT } from "../constants/errors";
 import { TicketBookingForm } from "../components/TicketBookingForm";
 import { AuthorizationDetails, BookingTypes } from "../models/ticket-booking";
-import { AUTHORIZATION_DETAILS_KEY, SESSION_DATA_KEY_PREFIX, TICKET_BOOKING_CREATION_TYPE } from "../constants/ticket-booking";
+import { AUTHORIZATION_DETAILS_KEY, BOOKING_TYPE_STORAGE_KEY, SESSION_DATA_KEY_PREFIX, TICKET_BOOKING_CREATION_TYPE } from "../constants/ticket-booking";
 import CONCERT from "../images/concert.png";
 import FILM from "../images/movie.png";
 
@@ -54,6 +54,9 @@ export const HomePage: FunctionComponent = (): ReactElement => {
     const search = useLocation().search;
     const stateParam = new URLSearchParams(search).get('state');
     const errorDescParam = new URLSearchParams(search).get('error_description');
+    const currentSelectedBookingType: string = sessionStorage?.getItem(BOOKING_TYPE_STORAGE_KEY);
+
+    const [ signInRequestLoading, setSignInRequestLoading ] = useState<boolean>(false);
 
     /**
      * Key that stores the session data in the session storage.
@@ -66,19 +69,6 @@ export const HomePage: FunctionComponent = (): ReactElement => {
         }
     };
 
-    /**
-     * Extract the authorization details from the session storage.
-     */
-    const authorizationDetails: AuthorizationDetails = useMemo(() => {
-        const sessionDataKey: string = getSessionDataKey();
-        if (!sessionDataKey) {
-            return null;
-        }
-
-        const sessionData: Record<string, object> = JSON.parse(sessionStorage.getItem(sessionDataKey));
-        return (sessionData?.[AUTHORIZATION_DETAILS_KEY] as AuthorizationDetails[])?.[0];
-    }, [ state ]);
-
     useEffect(() => {
         if(stateParam && errorDescParam) {
             if(errorDescParam === "End User denied the logout request") {
@@ -88,7 +78,7 @@ export const HomePage: FunctionComponent = (): ReactElement => {
     }, [stateParam, errorDescParam]);
 
     const handleLogin = useCallback((bookingType?: BookingTypes) => {
-        setHasLogoutFailureError(false);
+        setSignInRequestLoading(true);
         const additionalParams: Record<string, string> = {}
         if (bookingType) {
             additionalParams[AUTHORIZATION_DETAILS_KEY] = JSON.stringify([{
@@ -100,6 +90,12 @@ export const HomePage: FunctionComponent = (): ReactElement => {
             sessionStorage.removeItem(getSessionDataKey());
             additionalParams.prompt = "none";
         }
+        if (bookingType) {
+            sessionStorage.setItem(BOOKING_TYPE_STORAGE_KEY, bookingType);
+        } else {
+            sessionStorage.removeItem(BOOKING_TYPE_STORAGE_KEY);
+        }
+        setHasLogoutFailureError(false);
         signIn(additionalParams).catch(() => setHasAuthenticationErrors(true));
     }, [ signIn ]);
 
@@ -151,14 +147,14 @@ export const HomePage: FunctionComponent = (): ReactElement => {
 
     return (
         <DefaultLayout
-            isLoading={ state.isLoading }
+            isLoading={ state.isLoading || signInRequestLoading }
             hasErrors={ hasAuthenticationErrors }
         >
             {
-                authorizationDetails?.bookingType
+                currentSelectedBookingType
                     ? (
                         <div className="content">
-                            <TicketBookingForm serverUrl={ BACKEND_URL } bookingType={ authorizationDetails?.bookingType }/>
+                            <TicketBookingForm serverUrl={ BACKEND_URL } bookingType={ currentSelectedBookingType }/>
                             <button
                                 className="btn secondary"
                                 onClick={ () => handleLogin() }

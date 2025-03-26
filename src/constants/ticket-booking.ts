@@ -35,3 +35,8 @@ export const AUTHORIZATION_DETAILS_KEY: string = "authorization_details";
  * Fall back error message.
  */
 export const FALLBACK_ERROR_MESSAGE: string = "An error occurred.";
+
+/**
+ * Current selected booking type will be stored in the session storage under this key.
+ */
+export const BOOKING_TYPE_STORAGE_KEY: string = "booking_type";
