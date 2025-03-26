@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2022, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,4 +16,12 @@
  * under the License.
  */
 
+/**
+ * Error message when the user denies the logout request.
+ */
 export const USER_DENIED_LOGOUT = "End User denied the logout request";
+
+/**
+ * Fall back error message.
+ */
+export const FALLBACK_ERROR_MESSAGE: string = "An error occurred.";

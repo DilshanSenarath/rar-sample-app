@@ -16,31 +16,10 @@
  * under the License.
  */
 
-
 /**
  * Ticket booking types.
  */
 export enum BookingTypes {
     MOVIE = "film",
     CONCERT = "concert"
-}
-/**
- * Authorization details received for the token.
- */
-export interface AuthorizationDetails {
-    /**
-     * Type of the authorization details.
-     */
-    type: string;
-    /**
-     * Booking type.
-     */
-    bookingType: string;
-    /**
-     * Allowed amount for the booking.
-     */
-    allowedAmount: {
-        currency: string;
-        limit: number;
-    }
 }

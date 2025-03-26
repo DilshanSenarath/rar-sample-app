@@ -21,7 +21,7 @@ import { BookingTypes } from "../models/ticket-booking";
 import ConcertData from "../data/concerts.json";
 import FilmData from "../data/films.json";
 import { useAuthContext } from "@asgardeo/auth-react";
-import { FALLBACK_ERROR_MESSAGE } from "../constants/ticket-booking";
+import { FALLBACK_ERROR_MESSAGE } from "../constants/errors";
 
 export interface TicketBookingFormProps {
     /**
@@ -114,7 +114,7 @@ export const TicketBookingForm: FunctionComponent<TicketBookingFormProps> = (
                 !loading && errorMsg && (
                     <div className="content">
                         <div className="ui visible negative message">
-                            <div className="header"><b>403 Forbidden!</b></div>
+                            <div className="header"><b>Error!</b></div>
                             <p>{ errorMsg }</p>
                         </div>
                     </div>

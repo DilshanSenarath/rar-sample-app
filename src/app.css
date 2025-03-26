@@ -1,7 +1,7 @@
 /**
- * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
  *
- * WSO2 Inc. licenses this file to you under the Apache License,
+ * WSO2 LLC. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License.
  * You may obtain a copy of the License at
@@ -90,50 +90,6 @@ img.logo-image {
     margin-top: 100px;
 }
 
-code {
-    background: #272822;
-    padding: 4px;
-    font-size: 90%;
-    color: #fd971f;
-}
-
-.code {
-    background: #272822;
-    display: block;
-    word-break: break-all;
-    padding: 20px;
-    text-align: left;
-    border-radius: 4px;
-}
-
-.code .id-token-0 {
-    color: #cc6633;
-}
-
-.code .id-token-1 {
-    color: #f9f8f5;
-}
-
-.code .id-token-2 {
-    color: #fd971f;
-}
-
-.row {
-    width: 100%;
-    display: flex;
-    text-align: left;
-}
-
-.row>.column {
-    flex: 20%;
-    margin-right: 15px;
-}
-
-.row>.column:last-child {
-    flex: 80%;
-    margin-right: 0;
-}
-
 .error-page_h6 {
     font-size: 30px;
     text-transform: uppercase;
@@ -151,13 +107,6 @@ code {
     color: #151515;
 }
 
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-        margin-right: 0;
-    }
-}
-
 .container {
     background: #fff;
     border: 1px solid #e2e2e2;
@@ -165,17 +114,6 @@ code {
     margin: 0 auto;
     margin-top: 50px;
     border-radius: 10px;
-}
-
-.json {
-    text-align: left;
-    display: block;
-    overflow: auto;
-    word-break: break-all;
-}
-
-.json .pretty-json-container.object-container {
-    padding: 20px;
 }
 
 .header-title {
@@ -235,20 +173,6 @@ code {
     margin-top: 0;
 }
 
-.inline-code-block {
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    padding: 3px 5px;
-    border: 1px solid #cdcdcd;
-    background-color: white;
-    font-family: Monaco, Consolas, "Andale  Mono", "DejaVu Sans Mono", monospace;
-}
-
-.inline-code-block a {
-    text-decoration: none !important;
-}
-
 .pointer {
     cursor: pointer;
 }
@@ -267,11 +191,6 @@ code {
     color: #389f4e;
     box-shadow: 0 0 0 1px #b4e0c2 inset, 0 0 0 0 transparent;
     padding: 1em 1.5em;
-}
-
-.asg-json-viewer {
-    background-color: #272822 !important;
-    padding: 20px;
 }
 
 input {

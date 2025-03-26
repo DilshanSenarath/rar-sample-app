@@ -25,7 +25,7 @@ import { useLocation } from "react-router-dom";
 import { LogoutRequestDenied } from "../components/LogoutRequestDenied";
 import { USER_DENIED_LOGOUT } from "../constants/errors";
 import { TicketBookingForm } from "../components/TicketBookingForm";
-import { AuthorizationDetails, BookingTypes } from "../models/ticket-booking";
+import { BookingTypes } from "../models/ticket-booking";
 import { AUTHORIZATION_DETAILS_KEY, BOOKING_TYPE_STORAGE_KEY, SESSION_DATA_KEY_PREFIX, TICKET_BOOKING_CREATION_TYPE } from "../constants/ticket-booking";
 import CONCERT from "../images/concert.png";
 import FILM from "../images/movie.png";
